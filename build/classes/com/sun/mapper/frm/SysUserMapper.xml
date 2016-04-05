@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sun.mapper.frm.SysUserMapper">
+	<!-- 设置统一返回对象，便于以后扩展 -->
+	<resultMap type="com.sun.vo.frm.Sys_UserVO" id="Sys_UserVO">
+		<constructor>
+			<idArg column="id" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="user_code" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="user_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="tel" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="mail" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="type" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="deleteflag" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="recordstatus" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="inputuser" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="inputdatetime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+			<arg column="modifyuser" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="modifytime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+		</constructor>
+	</resultMap>
+
+	<!-- 根据ID查询唯一实体对象 -->
+	<select id="queryOne" parameterType="com.sun.vo.frm.Sys_UserVO"
+		resultMap="Sys_UserVO">
+		SELECT
+		*
+		FROM sys_user WHERE ID =#{id}
+	</select>
+
+
+
+	<!-- 根据ID更新其他非空属性 -->
+	<update id="update" parameterType="com.sun.vo.frm.Sys_UserVO">
+		UPDATE sys_user
+		<set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userCode != null" >
+        user_code = #{record.userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null" >
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel != null" >
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mail != null" >
+        mail = #{record.mail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deleteflag != null" >
+        deleteflag = #{record.deleteflag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recordstatus != null" >
+        recordstatus = #{record.recordstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inputuser != null" >
+        inputuser = #{record.inputuser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inputdatetime != null" >
+        inputdatetime = #{record.inputdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyuser != null" >
+        modifyuser = #{record.modifyuser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifytime != null" >
+        modifytime = #{record.modifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+		WHERE ID = #{id}
+	</update>
+	<!-- 插入一条新的实体对象 -->
+	<insert id="insert" parameterType="com.sun.vo.frm.Sys_UserVO">
+		INSERT INTO
+		sys_user(ID,NUM,LOANDATE,CURRENCY,RZMONEY,RZTERM,HKFREQUENCY,YEARZHCOST,DEMANDBRIEF,RELEASEDATE,STATUS,CREATER,AUDITOR,AUDITDATE,RESTYPE,COMPANYID,CONTACTS,CONTACTWAY,COMPANYNAME,PROJECTNAME,TS)
+		values (#{userCode,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{mail,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{deleteflag,jdbcType=VARCHAR}, #{recordstatus,jdbcType=VARCHAR}, 
+      #{inputuser,jdbcType=VARCHAR}, #{inputdatetime,jdbcType=TIMESTAMP}, #{modifyuser,jdbcType=VARCHAR}, 
+      #{modifytime,jdbcType=TIMESTAMP})
+	</insert>
+
+	<!-- 根据ID删除实体 -->
+	<delete id="delete" parameterType="com.sun.vo.frm.Sys_UserVO">
+		DELETE FROM sys_user WHERE ID
+		=#{id}
+	</delete>
+
+
+
+	
+	<!-- 根据非ID属性模糊查询实体列表 -->
+	<select id="queryPageList" parameterType="com.sun.pub.frame.PageRoll"
+		resultType="com.sun.pub.frame.ETIPResultSet">
+		SELECT * FROM sys_user T
+		<where>
+			<if test="parameters!=null">
+				<if test="parameters.loanDate!=null">
+					AND loanDate LIKE '%${parameters.loanDate}%'
+				</if>
+				<if test="parameters.currency!=null">
+					AND currency LIKE '%${parameters.currency}%'
+				</if>
+				<if test="parameters.rzMoney!=null">
+					AND rzMoney LIKE '%${parameters.rzMoney}%'
+				</if>
+				<if test="parameters.rzTerm!=null">
+					AND rzTerm LIKE '%${parameters.rzTerm}%'
+				</if>
+			</if>
+		</where>
+		ORDER BY id DESC
+	</select>
+</mapper>
