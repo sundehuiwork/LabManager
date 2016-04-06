@@ -34,15 +34,15 @@ public class LoginController extends FrmController{
 		ModelAndView mv = new ModelAndView();
 		ETIPResultSet set=new ETIPResultSet();
 		if(vo!=null&&vo.getPassword()!=null&& vo.getPassword().equals(password)){
+			request.getSession().setAttribute("LabManagerUser", vo);
 			if(vo.getType().equals("0")){
 				set.put("isadmin", 1);
-				set.put("username", usercode);
-				set.put("rolename", "系统管理员");
+				
 			}else{
 				set.put("isadmin", 0);
-				set.put("username", usercode);
-				set.put("rolename", "普通用户");
 			}
+			set.put("username", vo.getUsercode());
+			set.put("rolename", vo.getUsername());
 			mv.addObject("vo", set);
 			mv.setViewName("/main.jsp");
 		}else{
