@@ -53,7 +53,6 @@
                         </div>
                     </li>
                  	<c:if  test="${vo.isadmin==1}"> 
-                 	 
                     <li>
                         <a href="#">
                             <i class="fa fa-home"></i>
@@ -135,15 +134,28 @@
                             </li>
                         </ul>
                     </li>
-                    </c:if >
                     <li>
                         <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">设备管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">设备管理</a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">设备入库</a>
+                            </li>
+                     		<li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">设备出库</a>
+                            </li>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">设备使用情况查询</a>
+                            </li>
+                        </ul>
+                    </li>
+                    </c:if >
+                    <c:if  test="${vo.isadmin==0}"> 
+                    <li>
+                        <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">设备管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">设备借用</a>
                             </li>
                      
                         </ul>
                     </li>
+                    </c:if>
                     
                 </ul>
             </div>
