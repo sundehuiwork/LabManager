@@ -5,22 +5,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.sun.mapper.frm.SysUserMapper">
 	<!-- 设置统一返回对象，便于以后扩展 -->
 	<resultMap type="com.sun.vo.frm.Sys_UserVO" id="Sys_UserVO">
-		<constructor>
-			<idArg column="id" jdbcType="VARCHAR" javaType="java.lang.String" />
-			<arg column="user_code" jdbcType="VARCHAR" javaType="java.lang.String" />
-			<arg column="user_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-			<arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
-			<arg column="tel" jdbcType="VARCHAR" javaType="java.lang.String" />
-			<arg column="mail" jdbcType="VARCHAR" javaType="java.lang.String" />
-			<arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
-			<arg column="type" jdbcType="VARCHAR" javaType="java.lang.String" />
-			<arg column="deleteflag" jdbcType="VARCHAR" javaType="java.lang.String" />
-			<arg column="recordstatus" jdbcType="VARCHAR" javaType="java.lang.String" />
-			<arg column="inputuser" jdbcType="VARCHAR" javaType="java.lang.String" />
-			<arg column="inputdatetime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-			<arg column="modifyuser" jdbcType="VARCHAR" javaType="java.lang.String" />
-			<arg column="modifytime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-		</constructor>
+			<id column="ID" property="id" />
+			<result column="usercode" property="usercode" />
+			<result column="username" property="username" />
+			<result column="password" property="password" />
+			<result column="tel" property="tel" />
+			<result column="mail" property="mail" />
+			<result column="remark" property="remark" />
+			<result column="type" property="type"/>
+			<result column="deleteflag" property="deleteflag" />
+			<result column="recordstatus" property="recordstatus" />
+			<result column="inputuser" property="inputuser" />
+			<result column="inputdatetime" property="inputdatetime" />
+			<result column="modifyuser" property="modifyuser" />
+			<result column="modifytime" property="modifytime" />
 	</resultMap>
 
 	<!-- 根据ID查询唯一实体对象 -->
@@ -28,7 +26,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultMap="Sys_UserVO">
 		SELECT
 		*
-		FROM sys_user WHERE ID =#{id}
+		FROM sys_user WHERE 1=1
+		<if test="id != null" >
+         and ID =#{id}
+       </if>
+		<if test="usercode != null" >
+         and usercode = #{usercode,jdbcType=VARCHAR}
+       </if>
 	</select>
 
 
@@ -37,56 +41,62 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="update" parameterType="com.sun.vo.frm.Sys_UserVO">
 		UPDATE sys_user
 		<set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=VARCHAR},
+      <if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
       </if>
-      <if test="record.userCode != null" >
-        user_code = #{record.userCode,jdbcType=VARCHAR},
+      <if test="usercode != null" >
+        usercode = #{usercode,jdbcType=VARCHAR},
       </if>
-      <if test="record.userName != null" >
-        user_name = #{record.userName,jdbcType=VARCHAR},
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="record.password != null" >
-        password = #{record.password,jdbcType=VARCHAR},
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="record.tel != null" >
-        tel = #{record.tel,jdbcType=VARCHAR},
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
       </if>
-      <if test="record.mail != null" >
-        mail = #{record.mail,jdbcType=VARCHAR},
+      <if test="mail != null" >
+        mail = #{mail,jdbcType=VARCHAR},
       </if>
-      <if test="record.remark != null" >
-        remark = #{record.remark,jdbcType=VARCHAR},
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="record.type != null" >
-        type = #{record.type,jdbcType=VARCHAR},
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
       </if>
-      <if test="record.deleteflag != null" >
-        deleteflag = #{record.deleteflag,jdbcType=VARCHAR},
+      <if test="deleteflag != null" >
+        deleteflag = #{deleteflag,jdbcType=VARCHAR},
       </if>
-      <if test="record.recordstatus != null" >
-        recordstatus = #{record.recordstatus,jdbcType=VARCHAR},
+      <if test="recordstatus != null" >
+        recordstatus = #{recordstatus,jdbcType=VARCHAR},
       </if>
-      <if test="record.inputuser != null" >
-        inputuser = #{record.inputuser,jdbcType=VARCHAR},
+      <if test="inputuser != null" >
+        inputuser = #{inputuser,jdbcType=VARCHAR},
       </if>
-      <if test="record.inputdatetime != null" >
-        inputdatetime = #{record.inputdatetime,jdbcType=TIMESTAMP},
+      <if test="inputdatetime != null" >
+        inputdatetime = #{inputdatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.modifyuser != null" >
-        modifyuser = #{record.modifyuser,jdbcType=VARCHAR},
+      <if test="modifyuser != null" >
+        modifyuser = #{modifyuser,jdbcType=VARCHAR},
       </if>
-      <if test="record.modifytime != null" >
-        modifytime = #{record.modifytime,jdbcType=TIMESTAMP},
+      <if test="modifytime != null" >
+        modifytime = #{modifytime,jdbcType=TIMESTAMP},
       </if>
     </set>
 		WHERE ID = #{id}
 	</update>
 	<!-- 插入一条新的实体对象 -->
 	<insert id="insert" parameterType="com.sun.vo.frm.Sys_UserVO">
-		INSERT INTO
-		sys_user(ID,NUM,LOANDATE,CURRENCY,RZMONEY,RZTERM,HKFREQUENCY,YEARZHCOST,DEMANDBRIEF,RELEASEDATE,STATUS,CREATER,AUDITOR,AUDITDATE,RESTYPE,COMPANYID,CONTACTS,CONTACTWAY,COMPANYNAME,PROJECTNAME,TS)
-		values (#{userCode,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+		<selectKey resultType="java.lang.String" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_user (id,usercode, username, password, 
+      tel, mail, remark, 
+      type, deleteflag, recordstatus, 
+      inputuser, inputdatetime, modifyuser, 
+      modifytime)
+    values (#{id,jdbcType=VARCHAR},#{usercode,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{tel,jdbcType=VARCHAR}, #{mail,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
       #{type,jdbcType=VARCHAR}, #{deleteflag,jdbcType=VARCHAR}, #{recordstatus,jdbcType=VARCHAR}, 
       #{inputuser,jdbcType=VARCHAR}, #{inputdatetime,jdbcType=TIMESTAMP}, #{modifyuser,jdbcType=VARCHAR}, 
@@ -108,14 +118,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM sys_user T
 		<where>
 			<if test="parameters!=null">
-				<if test="parameters.loanDate!=null">
-					AND loanDate LIKE '%${parameters.loanDate}%'
+				<if test="parameters.usercode!=null">
+					AND usercode LIKE '%${parameters.usercode}%'
 				</if>
-				<if test="parameters.currency!=null">
-					AND currency LIKE '%${parameters.currency}%'
+				<if test="parameters.username!=null">
+					AND username LIKE '%${parameters.username}%'
 				</if>
-				<if test="parameters.rzMoney!=null">
-					AND rzMoney LIKE '%${parameters.rzMoney}%'
+				<if test="parameters.type!=null">
+					AND type = '${parameters.type}'
 				</if>
 				<if test="parameters.rzTerm!=null">
 					AND rzTerm LIKE '%${parameters.rzTerm}%'

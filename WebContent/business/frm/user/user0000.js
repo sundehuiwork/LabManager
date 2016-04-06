@@ -1,53 +1,45 @@
-
-
-function doAdd(){
-	location.href = path+"/business/frm/user/user0001.jsp";
-}
-
-function doEdit(){
-	var chks=$("input:checked");
-	if(chks.length==1){
-		var id=chks[0].value;
-		location.href = path+"/business/frm/user/user0002.jsp?uid="+id;
-	}else{
-		alert("请选择一条记录!");
-	}
-	var len = chks.length;
-
-   }
-
-function doDel(){
-	var chks=$("input:checked");
-	var ids = [];
-	if(chks.length<1){
-		alert("请选择一条记录!");
-		return;
-		
-	}
-	// 循环得到所需要删除的数据
-	for ( var index = 0; index < chks.length; index++) {
-		var id=chks[index].value;
-		ids[index] = id;
-	}
-	var param = {};
-	param["ids"] = ids;
-	var str=JSON.stringify(ids);
-	location.href = path+"/sysuser/delele.action?ids="+str;
-	
-
-   
-}
+//查询
 function doQry(){
 	var frmQry= formToJson($("#frmQry"));
 	var PageRoll= formToJson($("#PageRoll"));
-	location.href = path+"/sysuser/getSearchPage.action?frmQry="+frmQry+"&PageRoll="+PageRoll;
-	
+	location.href = path+"/sysuser/index.action?frmQry="+frmQry+"&PageRoll="+PageRoll;
+}
+//新增
+function doAdd(){
+	location.href = path+"/business/frm/user/user0001.jsp";
+}
+//修改
+function doEdit(id){
+	location.href = path+"/sysuser/indexedit.action?id="+id;
+   }
+//删除
+function doDel(id){
+	var r = confirm("是否确认删除!")
+	if (r == true) {
+		$.ajax({   
+		    url:path+'/sysuser/delele.action',   
+		    type:"POST",
+		    data:'id='+id,   
+		    async : false, //默认为true 异步   
+		    success:function(data){
+		    	if(data.success==true){
+		    		alert("删除成功!");
+		    		doQry();
+		    	}
+	        },
+	        error:function(msg){
+	        	alert("error");
+	        }
+		});
+		
+	}
 }
 
 
 
-function doBack(){
-	location.href = path+"/sysuser/getSearchPage.action";
+
+function doReset(){
+	 $(':input', '#frmQry').not(':button, :submit, :reset, :hidden').val('').removeAttr('checked').removeAttr('selected');
 }
 
 function doSave() {

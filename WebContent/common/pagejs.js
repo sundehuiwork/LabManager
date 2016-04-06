@@ -1,42 +1,35 @@
 function NextPage(){
-	
-	var currpage=document.getElementById("currpage").value;
-	var sumpage=document.getElementById("sumpage").value;
-	if(currpage<sumpage){
-	var tcurrpage=parseInt(currpage)+1;
-	document.getElementById("currpage").value=tcurrpage;
-	var frmQry= formToJson($("#frmQry"));
-	var PageRoll= formToJson($("#PageRoll"));
-	location.href = path+"/sysuser/getSearchPage.action?frmQry="+frmQry+"&PageRoll="+PageRoll;
+	var currentPage=$("#currentPage").val();
+	var sumPage=$("#sumPage").val(); 
+	if(currentPage<sumPage){
+	var tcurrentPage=parseInt(currentPage)+1;
+	$("#currentPage").val(tcurrentPage);
+	doQry();
 	}
 }
 function PreviPage(){
-	var sumpage=document.getElementById("sumpage").value;
-	var currpage=document.getElementById("currpage").value;
-	document.getElementById("currpage").value=sumpage;
-	var frmQry= formToJson($("#frmQry"));
-	var PageRoll= formToJson($("#PageRoll"));
-	location.href = path+"/sysuser/getSearchPage.action?frmQry="+frmQry+"&PageRoll="+PageRoll;
+	var currentPage=$("#currentPage").val();
+	if(currentPage>1){
+		var tcurrentPage=parseInt(currentPage)-1;
+		$("#currentPage").val(tcurrentPage);
+		doQry();
+		}
 }
 function FirstPage(){
-		document.getElementById("currpage").value="1";
-		var frmQry= formToJson($("#frmQry"));
-		var PageRoll= formToJson($("#PageRoll"));
-		location.href = path+"/sysuser/getSearchPage.action?frmQry="+frmQry+"&PageRoll="+PageRoll;
+		$("#currentPage").val("1");
+		doQry();
 }
 
 function EndPage(){
-	if(currpage>1){
-		var currpage=document.getElementById("currpage").value;
-		var tcurrpage=parseInt(currpage)-1;
-		document.getElementById("currpage").value=tcurrpage;
-		var frmQry= formToJson($("#frmQry"));
-		var PageRoll= formToJson($("#PageRoll"));
-		location.href = path+"/sysuser/getSearchPage.action?frmQry="+frmQry+"&PageRoll="+PageRoll;
-		}
+	var sumPage=$("#sumPage").val();
+	var currentPage=$("#currentPage").val(); 
+	$("#currentPage").val(sumPage); 
+	doQry();
 }
+
+
 function selecPageSize(){
-	var frmQry= formToJson($("#frmQry"));
-	var PageRoll= formToJson($("#PageRoll"));
-	location.href = path+"/sysuser/getSearchPage.action?frmQry="+frmQry+"&PageRoll="+PageRoll;
+	var pageSize=$("select[name=pageSize]").val();
+	$("#pageSize").val(pageSize); 
+	doQry();
 }

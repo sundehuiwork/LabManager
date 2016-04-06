@@ -34,8 +34,7 @@
                        
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                                <span class="block m-t-xs"><strong class="font-bold">${vo.username}</strong></span>
-                                <span class="text-muted text-xs block"><strong class="font-bold">${vo.rolename}</strong></span>
+                                <span class="block m-t-xs"><strong class="font-bold">欢迎您：${vo.rolename}</strong></span>
                                 </span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">

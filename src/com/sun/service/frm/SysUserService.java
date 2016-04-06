@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 
+
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.StringUtil;
@@ -15,6 +16,7 @@ import com.sun.mapper.frm.SysUserMapper;
 import com.sun.pub.frame.ETIPResultSet;
 import com.sun.pub.frame.PageRoll;
 import com.sun.pub.utils.PageUtils;
+import com.sun.pub.utils.UuidUtil;
 import com.sun.vo.frm.Sys_UserVO;
 
 
@@ -44,6 +46,7 @@ public class SysUserService implements ISysUserService {
 	 * @return insert(Sys_UserVO)
 	 */
 	public void insert(Sys_UserVO vo) throws Exception {
+		vo.setId(UuidUtil.get32UUID());
 		sysusermapper.insert(vo);
 	}
 

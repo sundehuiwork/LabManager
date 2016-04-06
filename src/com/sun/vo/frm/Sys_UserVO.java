@@ -5,9 +5,9 @@ import java.util.Date;
 public class Sys_UserVO {
     private String id;
 
-    private String userCode;
+    private String usercode;
 
-    private String userName;
+    private String username;
 
     private String password;
 
@@ -30,23 +30,12 @@ public class Sys_UserVO {
     private String modifyuser;
 
     private Date modifytime;
+    
+    private String gender;
+    
+    private Date birth;
 
-    public Sys_UserVO(String id, String userCode, String userName, String password, String tel, String mail, String remark, String type, String deleteflag, String recordstatus, String inputuser, Date inputdatetime, String modifyuser, Date modifytime) {
-        this.id = id;
-        this.userCode = userCode;
-        this.userName = userName;
-        this.password = password;
-        this.tel = tel;
-        this.mail = mail;
-        this.remark = remark;
-        this.type = type;
-        this.deleteflag = deleteflag;
-        this.recordstatus = recordstatus;
-        this.inputuser = inputuser;
-        this.inputdatetime = inputdatetime;
-        this.modifyuser = modifyuser;
-        this.modifytime = modifytime;
-    }
+   private String cradnum;
 
     
 
@@ -58,21 +47,7 @@ public class Sys_UserVO {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getUserCode() {
-        return userCode;
-    }
-
-    public void setUserCode(String userCode) {
-        this.userCode = userCode == null ? null : userCode.trim();
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
-    }
+    
 
     public String getPassword() {
         return password;
@@ -161,4 +136,44 @@ public class Sys_UserVO {
     public void setModifytime(Date modifytime) {
         this.modifytime = modifytime;
     }
+
+	public String getUsercode() {
+		return usercode;
+	}
+
+	public void setUsercode(String usercode) {
+		this.usercode = usercode;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public String getCradnum() {
+		return cradnum;
+	}
+
+	public void setCradnum(String cradnum) {
+		this.cradnum = cradnum;
+	}
+
+	public Date getBirth() {
+		return birth;
+	}
+
+	public void setBirth(Date birth) {
+		this.birth = birth;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 }

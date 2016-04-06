@@ -29,12 +29,12 @@
         <!-- 设置关联对象加载的形态，此处为按需加载字段(加载字段由SQL指 定)，不会加载关联表的所有字段，以提高性能 -->
         <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
-
+	<!--
 	<typeAliases>
         <package name="com.rf.lease.data"/>
     </typeAliases>
 	
-	<!-- <plugins>
+ <plugins>
 		<plugin interceptor="com.fh.plugin.PagePlugin">
 			<property name="dialect" value="mysql"/>
 			<property name="pageSqlId" value=".*listPage.*"/>

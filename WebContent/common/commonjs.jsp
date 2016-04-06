@@ -11,7 +11,6 @@
     <script src="${pageContext.request.contextPath}/assets/js/plugins/validate/jquery.validate.js"></script>
 	<script src="${pageContext.request.contextPath}/common/tools.js"></script>
 	<script src="${pageContext.request.contextPath}/common/pagejs.js"></script>
-	<script src="${pageContext.request.contextPath}/js/jquery.fileupload.js"></script>
 	 <script src="${pageContext.request.contextPath}/assets/js/content.min.js?v=1.0.0"></script>
     <script src="${pageContext.request.contextPath}/assets/js/plugins/validate/jquery.validate.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/plugins/validate/messages_zh.min.js"></script>
