@@ -31,9 +31,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="id != null" >
          and ID =#{id}
        </if>
-		<if test="usercode != null" >
-         and usercode = #{usercode,jdbcType=VARCHAR}
-       </if>
 	</select>
 
 
@@ -122,18 +119,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM tst_equipment T
 		<where>
 			<if test="parameters!=null">
-				<if test="parameters.usercode!=null">
-					AND usercode LIKE '%${parameters.usercode}%'
+				<if test="parameters.equname!=null">
+					AND equname LIKE '%${parameters.equname}%'
 				</if>
-				<if test="parameters.username!=null">
-					AND username LIKE '%${parameters.username}%'
+				<if test="parameters.equindate!=null">
+					AND equindate LIKE '%${parameters.equindate}%'
 				</if>
-				<if test="parameters.type!=null">
-					AND type = '${parameters.type}'
+				<if test="parameters.equinorg!=null">
+					AND equinorg = '${parameters.equinorg}'
 				</if>
-				<if test="parameters.rzTerm!=null">
-					AND rzTerm LIKE '%${parameters.rzTerm}%'
+				<if test="parameters.status!=null">
+					AND status = '${parameters.status}'
 				</if>
+				 AND status in  
+ 				<foreach item="item" index="index" collection="parameters.ids" open="(" separator="," close=")">  
+ 					#{item}  
+ 				</foreach>  
 			</if>
 		</where>
 		ORDER BY id DESC

@@ -51,4 +51,15 @@ public class LoginController extends FrmController{
 		return mv;
 	}
 	
+	
+	@RequestMapping("/loginout")
+	public ModelAndView loginout(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+			ModelAndView mv = new ModelAndView();
+			request.getSession().setAttribute("LabManagerUser", null);
+			mv.setViewName("/login.jsp");
+		
+		return mv;
+	}
+	
 }

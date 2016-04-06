@@ -45,7 +45,7 @@
                                 <li><a class="J_menuItem" href="${pageContext.request.contextPath}/templates/mailbox.jsp">信箱</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="${pageContext.request.contextPath}/login.jsp">安全退出</a>
+                                <li><a href="${pageContext.request.contextPath}/login/loginout.action">安全退出</a>
                                 </li>
                             </ul>
                         </div>
@@ -68,11 +68,11 @@
                     <li>
                         <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">设备管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">设备入库</a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstequipment/indexin.action">设备入库</a>
                             </li>
-                     		<li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">设备出库</a>
+                     		<li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstequipment/indexcheck.action">设备维护、报废</a>
                             </li>
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">设备使用情况查询</a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstequipment/indexquery.action">设备使用情况查询</a>
                             </li>
                         </ul>
                     </li>
@@ -81,7 +81,7 @@
                     <li>
                         <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">设备管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">设备借用</a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstequipment/indexout.action">设备借用</a>
                             </li>
                         </ul>
                     </li>

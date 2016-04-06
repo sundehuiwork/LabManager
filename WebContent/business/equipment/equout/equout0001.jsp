@@ -99,7 +99,7 @@
         </div>
     </div>
     <%@include file="/common/commonjs.jsp" %>
-     <script type="text/javascript" src="${pageContext.request.contextPath}/business/equipment/equin/equin0001.js"></script>
+     <script type="text/javascript" src="${pageContext.request.contextPath}/business/equipment/equout/equout0001.js"></script>
 </body>
 
 </html>

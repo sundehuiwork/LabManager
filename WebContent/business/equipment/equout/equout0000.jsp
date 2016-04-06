@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--公用样式开始  -->
 <%@include file="/common/common.jsp"%>
 <!-- 公共样式结束 -->
@@ -7,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>设备入库</title>
+<title>设备借用</title>
 </head>
 <body class="gray-bg">
 	<div class="container-fluid" style="padding: 15px;">
@@ -15,7 +16,7 @@
 			<div class="col-sm-12">
 				<div class="ibox float-e-margins">
 					<div class="ibox-title">
-						<h5>设备入库查询</h5>
+						<h5>设备借用查询</h5>
 						<div class="ibox-tools">
 							<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
 							</a>
@@ -29,7 +30,7 @@
 									<input id="equname" name="equname" type="text"
 										class="form-control" required aria-required="true" value="${frmQry.equname}">
 								</div>
-								<label class="col-sm-2 control-label">入库时间:</label>
+								<label class="col-sm-2 control-label">借用时间:</label>
 								<div class="col-sm-4">
 									<input id="equindate" name="equindate" type="text"
 										class="form-control" required aria-required="true" value="${frmQry.equindate}">
@@ -47,6 +48,14 @@
 										<option value='5' ${frmQry.equinorg=='5'?'selected':''}>实验室五</option>
 									</select>
 								</div>
+								<label class="col-sm-2 control-label">设备状态:</label>
+								<div class="col-sm-4">
+									<select name="status" class="form-control m-b" >
+								    	<option value='' > 请选择...</option>
+										<option value='1' ${frmQry.status=='1'?'selected':''}>可借用</option>
+										<option value='2' ${frmQry.status=='2'?'selected':''}>已借用</option>
+									</select>
+								</div>
 							</div>
 							<div class="row-fluid">
 								<div class="span12 col-sm-offset-10">
@@ -61,7 +70,7 @@
 
 				<div class="ibox float-e-margins">
 					<div class="ibox-title">
-						<h5>设备入库查询结果列表</h5>
+						<h5>设备借用查询结果列表</h5>
 						<div class="ibox-tools">
 							<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
 							</a>
@@ -83,6 +92,9 @@
 												<th>设备规格</th>
 												<th>入库时间</th>
 												<th>设备所属实验室</th>
+												<th>设备状态</th>
+												<th>借用时间</th>
+												<th>借用人</th>
 												<th>操作</th>
 											</tr>
 										</thead>
@@ -103,7 +115,14 @@
 															<option value='4' ${frmList.equinorg=='4'?'selected':''}>实验室四</option>
 															<option value='5' ${frmList.equinorg=='5'?'selected':''}>实验室五</option>
 													</select></td>
-													<td><a onclick="doEdit('${frmList.id}')">修改</a>&nbsp;&nbsp;<a onclick="doDel('${frmList.id}')">删除</a></td>
+													<td><select name="status" disabled="disabled" >
+															<option value='' > 请选择...</option>
+															<option value='1' ${frmList.status=='1'?'selected':''}>可借用</option>
+															<option value='2' ${frmList.status=='2'?'selected':''}>已借用</option>
+													</select></td>
+													<td><span class="pie">${frmList.equoutdate}</span></td>
+													<td><span class="pie">${frmList.equoutperson}</span></td>
+													<td><c:if  test="${frmList.status==1}"> <a onclick="doEdit('${frmList.id}','2')">借用</a></c:if></td>
 												</tr>
 											</core:forEach>
 										</tbody>
@@ -122,7 +141,7 @@
 	<!-- 公用js开始 -->
 	<%@include file="/common/commonjs.jsp"%>
 	<!-- 公用js结束 -->
-	<script type="text/javascript" src="${pageContext.request.contextPath}/business/equipment/equin/equin0000.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/business/equipment/equout/equout0000.js"></script>
 	<script>
     </script>
 </body>

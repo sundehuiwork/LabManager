@@ -103,7 +103,7 @@
 															<option value='4' ${frmList.equinorg=='4'?'selected':''}>实验室四</option>
 															<option value='5' ${frmList.equinorg=='5'?'selected':''}>实验室五</option>
 													</select></td>
-													<td><a onclick="doEdit('${frmList.id}')">修改</a>&nbsp;&nbsp;<a onclick="doDel('${frmList.id}')">删除</a></td>
+													<td><a onclick="doEdit('${frmList.id}','3')">维护</a>&nbsp;&nbsp;<a onclick="doEdit('${frmList.id}','4')">报废</a></td>
 												</tr>
 											</core:forEach>
 										</tbody>
@@ -122,7 +122,7 @@
 	<!-- 公用js开始 -->
 	<%@include file="/common/commonjs.jsp"%>
 	<!-- 公用js结束 -->
-	<script type="text/javascript" src="${pageContext.request.contextPath}/business/equipment/equin/equin0000.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/business/equipment/equcheck/equcheck0000.js"></script>
 	<script>
     </script>
 </body>
