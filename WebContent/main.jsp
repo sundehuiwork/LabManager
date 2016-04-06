@@ -63,75 +63,6 @@
                             <li>
                                 <a class="J_menuItem" href="${pageContext.request.contextPath}/sysuser/index.action" data-index="0">用户管理</a>
                             </li>
-                            <li>
-                                <a class="J_menuItem" href="${pageContext.request.contextPath}/templates/index_v3.jsp">角色管理</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="${pageContext.request.contextPath}/freemarker/index_v3.jsp">资源管理</a>
-                            </li>
-                              <li>
-                                <a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/autocode/productCode.jsp">代码生成器</a>
-                            </li>
-                              <li>
-                                <a class="J_menuItem" href="${pageContext.request.contextPath}/freemarker/test1.action">freemarker静态页面测试1</a>
-                            </li>
-                             <li>
-                                <a class="J_menuItem" href="${pageContext.request.contextPath}/freemarker/test2.action">freemarker静态页面测试2</a>
-                            </li>
-                        </ul>
-
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">拓扑管理</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">网络拓扑</a>
-                            </li>
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">系统拓扑</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">产品管理</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">网络设备管理</a>
-                            </li>
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">IP管理</a>
-                            </li>
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">位置管理</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">产品管理</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">网络管理</a>
-                            </li>
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">主机管理</a>
-                            </li>
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">数据库管理</a>
-                            </li>
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">中间件管理</a>
-                            </li>
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">应用管理</a>
-                            </li>
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">日志管理</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-table"></i> <span class="nav-label">故障管理</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">告警规则</a>
-                            </li>
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">当前告警</a>
-                            </li>
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">告警查看</a>
-                            </li>
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">告警分析</a>
-                            </li>
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">
-                               处理经验</a>
-                            </li>
                         </ul>
                     </li>
                     <li>
@@ -152,7 +83,6 @@
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="${pageContext.request.contextPath}/business/frm/user/user0000.jsp">设备借用</a>
                             </li>
-                     
                         </ul>
                     </li>
                     </c:if>
