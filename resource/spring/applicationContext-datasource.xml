@@ -77,11 +77,5 @@
 	</aop:config>
 	
 	
-	<!-- 主动插入主键AOP -->
-		<bean id="generatePK" class="com.sun.pub.frame.GenerateVOPK"/>
-		<aop:config>
-		   <aop:aspect ref="generatePK">
-		     <aop:before method="insertVOPK"  pointcut="execution(* com..*.*Service.insert*(..))"/>
-		   </aop:aspect>
-		</aop:config>
+	
 </beans>
