@@ -76,6 +76,42 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#"><i class="fa fa-scissors"></i> <span class="nav-label">拓扑管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstequipment/indexin.action">网络拓扑</a>
+                            </li>
+                     		<li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstequipment/indexcheck.action">系统拓扑</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">产品管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstProduct/index.action">版权说明</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-paperclip"></i> <span class="nav-label">专项管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstNetwork/index.action">网络设备性能分析</a>
+                            </li>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstNetwork/index1.action">网络设备配置管理</a>
+                            </li>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstVirtualization/index2.action">虚拟机磁盘分析</a>
+                            </li>
+                     		 <li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstVirtualization/index.action">虚拟机网络分析</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-floppy-o"></i> <span class="nav-label">故障管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstError/index.action">故障分析</a>
+                            </li>
+                        </ul>
+                    </li>
                     </c:if >
                     <c:if  test="${vo.isadmin==0}"> 
                     <li>

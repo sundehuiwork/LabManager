@@ -5,7 +5,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,12 +25,14 @@ public class LoginController extends FrmController{
 	@RequestMapping("/login")
 	public ModelAndView login(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		String usercode=request.getParameter("Username");
 		String password=request.getParameter("password");
+		if(usercode!=null&&password!=null){
 		Sys_UserVO vo=new Sys_UserVO();
 		vo.setUsercode(usercode);
 		vo=sysUserService.queryOne(vo);
-		ModelAndView mv = new ModelAndView();
+		
 		ETIPResultSet set=new ETIPResultSet();
 		if(vo!=null&&vo.getPassword()!=null&& vo.getPassword().equals(password)){
 			request.getSession().setAttribute("LabManagerUser", vo);
@@ -46,6 +47,8 @@ public class LoginController extends FrmController{
 			mv.addObject("vo", set);
 			mv.setViewName("/main.jsp");
 		}else{
+			mv.setViewName("/error.jsp");
+		}}else{
 			mv.setViewName("/error.jsp");
 		}
 		return mv;
