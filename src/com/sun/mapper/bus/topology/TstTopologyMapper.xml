@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sun.mapper.bus.topology.TstTopologyMapper">
+	<!-- 设置统一返回对象，便于以后扩展 -->
+	<resultMap type="com.sun.vo.bus.topology.TstTopologyVO" id="TstTopologyVO">
+			<id column="ID" property="id" />
+			<result column="IP" property="ip" />
+			<result column="TYPE" property="type" />
+			<result column="EQUNUM" property="equnum" />
+			<result column="EQUNAME" property="equname" />
+			<result column="EQUMODEL" property="equmodel" />
+			<result column="EQUSPEC" property="equspec" />
+			<result column="EQUCOUNTRY" property="equcountry" />
+			<result column="EQUAMOUNT" property="equamount" />
+			<result column="OUTDATE" property="outdate" />
+			<result column="OUTDATE1" property="outdate1" />
+			<result column="EQUINORG" property="equinorg" />
+			
+	</resultMap>
+
+	<!-- 根据ID查询唯一实体对象 -->
+	<select id="queryOne" parameterType="com.sun.vo.bus.topology.TstTopologyVO"
+		resultMap="TstTopologyVO">
+		SELECT
+		*
+		FROM tst_topology WHERE 1=1
+		<if test="id != null" >
+         and ID =#{id}
+       </if>
+	</select>
+
+
+
+	<!-- 根据ID更新其他非空属性 -->
+	<update id="update" parameterType="com.sun.vo.bus.topology.TstTopologyVO">
+		UPDATE tst_topology
+		<set >
+      <if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="equnum != null" >
+        equnum = #{equnum,jdbcType=VARCHAR},
+      </if>
+      <if test="equname != null" >
+        equname = #{equname,jdbcType=VARCHAR},
+      </if>
+      <if test="equmodel != null" >
+        equmodel = #{equmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="equspec != null" >
+        equspec = #{equspec,jdbcType=VARCHAR},
+      </if>
+      <if test="equcountry != null" >
+        equcountry = #{equcountry,jdbcType=VARCHAR},
+      </if>
+      <if test="equamount != null" >
+        equamount = #{equamount,jdbcType=DECIMAL},
+      </if>
+      <if test="outdate != null" >
+        outdate = #{outdate,jdbcType=DATE},
+      </if>
+      <if test="equindate != null" >
+        equindate = #{equindate,jdbcType=DATE},
+      </if>
+      <if test="equinperson != null" >
+        equinperson = #{equinperson,jdbcType=VARCHAR},
+      </if>
+      <if test="equinorg != null" >
+        equinorg = #{equinorg,jdbcType=VARCHAR},
+      </if>
+      <if test="equoutdate != null" >
+        equoutdate = #{equoutdate,jdbcType=DATE},
+      </if>
+      <if test="equoutperson != null" >
+        equoutperson = #{equoutperson,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+		WHERE ID = #{id}
+	</update>
+	<!-- 插入一条新的实体对象 -->
+	<insert id="insert" parameterType="com.sun.vo.bus.topology.TstTopologyVO">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+      insert into tst_topology (id,ip, type, equname, 
+      equmodel, equspec, equcountry, 
+      equamount)
+    values (#{id,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{equname,jdbcType=VARCHAR}, 
+      #{equmodel,jdbcType=VARCHAR}, #{equspec,jdbcType=VARCHAR}, #{equcountry,jdbcType=VARCHAR}, 
+      #{equamount,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- 根据ID删除实体 -->
+	<delete id="delete" parameterType="com.sun.vo.bus.topology.TstTopologyVO">
+		DELETE FROM tst_topology WHERE ID
+		=#{id}
+	</delete>
+
+
+
+	
+	<!-- 根据非ID属性模糊查询实体列表 -->
+	<select id="queryPageList" parameterType="com.sun.pub.frame.PageRoll"
+		resultType="com.sun.pub.frame.ETIPResultSet">
+		SELECT * FROM tst_topology T
+		<where>
+			<if test="parameters!=null">
+				<if test="parameters.equname!=null">
+					AND equname LIKE '%${parameters.equname}%'
+				</if>
+				<if test="parameters.equindate!=null">
+					AND equindate LIKE '%${parameters.equindate}%'
+				</if>
+				<if test="parameters.equinorg!=null">
+					AND equinorg = '${parameters.equinorg}'
+				</if>
+				<if test="parameters.status!=null">
+					AND status = '${parameters.status}'
+				</if>
+			</if>
+		</where>
+		ORDER BY id DESC
+	</select>
+</mapper>

@@ -79,9 +79,9 @@
                     <li>
                         <a href="#"><i class="fa fa-scissors"></i> <span class="nav-label">拓扑管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstequipment/indexin.action">网络拓扑</a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstTopology/index.action">网络拓扑</a>
                             </li>
-                     		<li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstequipment/indexcheck.action">系统拓扑</a>
+                     		<li><a class="J_menuItem" href="${pageContext.request.contextPath}/tstTopology/index1.action">系统拓扑</a>
                             </li>
                         </ul>
                     </li>
